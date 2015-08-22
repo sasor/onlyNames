@@ -1,5 +1,8 @@
 extends layout
 
 block content
-  
-  h1 Hola isma
+ .container
+   .search
+    label.save: input.name( type='text', placeholder='name')
+    label.save: input.lastname( type='text', placeholder='lastname')
+    button.submit guardar
