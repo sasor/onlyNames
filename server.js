@@ -1,8 +1,12 @@
 var http	= require('http'),
+	fs		= require('fs'),
 	express = require('express'),
 	stylus  = require('stylus');
 
-var app = express();
+var app	   = express(),
+	file   = fs.readFileSync('data.json');
+
+var data   = JSON.parse(file);
 
 // jade como motor de templates
 app.set('view engine','jade');
@@ -15,6 +19,10 @@ app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(req, res) {
 	res.render('index');
+});
+
+app.get('/data', function(req, res){
+	res.send(data);
 });
 
 http.createServer(app).listen(3000, function(){
