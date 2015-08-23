@@ -4,9 +4,9 @@ var http	= require('http'),
 	stylus  = require('stylus');
 
 var app	   = express(),
-	file   = fs.readFileSync('data.json');
+	data   = fs.readFileSync('data.json');
 
-var data   = JSON.parse(file);
+var people   = JSON.parse(data);
 
 // jade como motor de templates
 app.set('view engine','jade');
@@ -21,8 +21,8 @@ app.get('/', function(req, res) {
 	res.render('index');
 });
 
-app.get('/data', function(req, res){
-	res.send(data);
+app.get('/people', function(req, res){
+	res.send(people);
 });
 
 http.createServer(app).listen(3000, function(){
